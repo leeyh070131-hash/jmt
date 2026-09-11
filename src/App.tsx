@@ -322,13 +322,13 @@ export default function App() {
   // Loading state
   if (authLoading) {
     return (
-      <div className="min-h-screen bg-stone-50 flex flex-col items-center justify-center p-6 space-y-4">
-        <div className="w-14 h-14 rounded-2xl bg-orange-500 flex items-center justify-center text-white shadow-lg shadow-orange-200 animate-bounce">
+      <div className="min-h-screen bg-canvas flex flex-col items-center justify-center p-6 space-y-4">
+        <div className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center text-on-primary animate-bounce">
           <Utensils className="w-7 h-7" />
         </div>
         <div className="text-center space-y-1">
-          <h2 className="text-lg font-black text-stone-900">밥팟 BobPot</h2>
-          <p className="text-xs text-stone-500 font-medium">로그인 상태를 확인하는 중입니다...</p>
+          <h2 className="font-display text-lg text-ink">밥팟 BobPot</h2>
+          <p className="text-xs text-muted font-medium">로그인 상태를 확인하는 중입니다...</p>
         </div>
       </div>
     );
@@ -351,17 +351,17 @@ export default function App() {
   const selectedPot = pots.find((p) => p.id === selectedPotId);
 
   return (
-    <div className="min-h-screen bg-stone-50 text-stone-900 flex flex-col font-sans">
+    <div className="min-h-screen bg-canvas text-ink flex flex-col font-sans">
       {/* Google Account Status Bar */}
-      <div className="bg-emerald-700 text-white px-4 py-1.5 text-xs font-semibold">
+      <div className="bg-brand-teal text-on-primary px-4 py-1.5 text-xs font-semibold">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <ShieldCheck className="w-4 h-4 text-emerald-300 flex-shrink-0" />
+            <ShieldCheck className="w-4 h-4 text-brand-mint flex-shrink-0" />
             <span>
               <strong>{currentUser.name}</strong>님의 구글 계정({currentUser.email})으로 접속 중입니다.
             </span>
           </div>
-          <span className="text-[11px] text-emerald-200 hidden md:inline">
+          <span className="text-[11px] text-on-primary/70 hidden md:inline">
             내 취향·알레르기·식사 팟이 클라우드에 실시간 보관됩니다.
           </span>
         </div>
@@ -432,10 +432,10 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-stone-200 py-6 text-center text-xs text-stone-400">
+      <footer className="bg-surface-soft border-t border-hairline py-6 text-center text-xs text-muted">
         <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <span>밥팟 (BobPot) — 구글 계정 기반 맞춤 식사 팟 추천 & 실시간 투표 서비스</span>
-          <span className="text-[11px] text-stone-400">
+          <span className="text-[11px] text-muted-soft">
             알레르기 100% 차단 • 비선호 배제 • 최근 3일 식사(선호 구제) • Firebase 실시간 연동
           </span>
         </div>

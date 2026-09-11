@@ -167,21 +167,21 @@ export const CreatePotModal: React.FC<CreatePotModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/60 backdrop-blur-xs animate-in fade-in duration-150">
-      <div className="bg-white rounded-3xl max-w-xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-stone-200">
+      <div className="bg-canvas rounded-3xl max-w-xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-hairline">
         {/* Header */}
-        <div className="p-6 border-b border-stone-100 flex items-center justify-between sticky top-0 bg-white/95 backdrop-blur-md z-10">
+        <div className="p-6 border-b border-hairline flex items-center justify-between sticky top-0 bg-canvas/95 backdrop-blur-md z-10">
           <div className="flex items-center gap-2.5">
-            <div className="w-10 h-10 rounded-2xl bg-orange-500 text-white flex items-center justify-center shadow-xs">
+            <div className="w-10 h-10 rounded-2xl bg-primary text-on-primary flex items-center justify-center">
               <Sparkles className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-lg font-black text-stone-900">새 식사 팟 만들기</h3>
-              <p className="text-xs text-stone-500">날짜·시간대·위치를 정하고 친구들을 초대하세요.</p>
+              <h3 className="text-lg font-bold text-ink">새 식사 팟 만들기</h3>
+              <p className="text-xs text-muted">날짜·시간대·위치를 정하고 친구들을 초대하세요.</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-2 text-stone-400 hover:text-stone-700 rounded-xl hover:bg-stone-100 transition-colors"
+            className="p-2 text-muted-soft hover:text-ink rounded-xl hover:bg-surface-card transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -191,22 +191,22 @@ export const CreatePotModal: React.FC<CreatePotModalProps> = ({
         <form onSubmit={handleSubmit} className="p-6 space-y-6">
           {/* Overlap Error Warning Banner */}
           {hasOverlap && (
-            <div className="p-4 rounded-2xl bg-red-50 border border-red-200 text-xs text-red-900 space-y-1.5 animate-in shake duration-150">
-              <div className="flex items-center gap-2 font-bold text-red-950">
-                <AlertTriangle className="w-4 h-4 text-red-600 flex-shrink-0" />
+            <div className="p-4 rounded-2xl bg-error/10 border border-error/30 text-xs text-error space-y-1.5 animate-in shake duration-150">
+              <div className="flex items-center gap-2 font-bold">
+                <AlertTriangle className="w-4 h-4 text-error flex-shrink-0" />
                 <span>중복 식사 팟 일정 감지! (생성 불가)</span>
               </div>
               <p className="leading-relaxed">
                 동일한 날짜({date})와 시간대({slotLabels[slot].name})에 이미 일정이 있는 멤버가 있습니다:
               </p>
-              <ul className="list-disc list-inside space-y-0.5 text-red-800 font-semibold pl-1">
+              <ul className="list-disc list-inside space-y-0.5 font-semibold pl-1">
                 {overlappingConflicts.map((c, i) => (
                   <li key={i}>
                     <strong>[{c.userName}]</strong>님 → '{c.potTitle}' 팟에 이미 참여 중
                   </li>
                 ))}
               </ul>
-              <p className="text-[11px] text-red-700 mt-1">
+              <p className="text-[11px] opacity-80 mt-1">
                 ※ 날짜나 시간대(아침/점심/저녁)를 변경하거나, 일정이 겹치는 멤버를 제외해주세요.
               </p>
             </div>
@@ -214,8 +214,8 @@ export const CreatePotModal: React.FC<CreatePotModalProps> = ({
 
           {/* Pot Title */}
           <div>
-            <label className="block text-xs font-bold text-stone-700 mb-1.5">
-              식사 팟 이름 <span className="text-red-500">*</span>
+            <label className="block text-xs font-bold text-body mb-1.5">
+              식사 팟 이름 <span className="text-error">*</span>
             </label>
             <input
               type="text"
@@ -223,15 +223,15 @@ export const CreatePotModal: React.FC<CreatePotModalProps> = ({
               placeholder="예: 금요일 강남역 저녁 번개, 점심 맛집 탐방"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-4 py-2.5 text-sm rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-orange-400 bg-stone-50"
+              className="w-full px-4 py-2.5 text-sm rounded-xl border border-hairline focus:outline-none focus:ring-2 focus:ring-ink/20 bg-canvas"
             />
           </div>
 
           {/* Date and Slot selection */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-bold text-stone-700 mb-1.5 flex items-center gap-1.5">
-                <Calendar className="w-3.5 h-3.5 text-stone-400" />
+              <label className="block text-xs font-bold text-body mb-1.5 flex items-center gap-1.5">
+                <Calendar className="w-3.5 h-3.5 text-muted-soft" />
                 <span>식사 날짜</span>
               </label>
               <input
@@ -239,13 +239,13 @@ export const CreatePotModal: React.FC<CreatePotModalProps> = ({
                 required
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-                className="w-full px-4 py-2.5 text-sm rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-orange-400 bg-stone-50 font-medium"
+                className="w-full px-4 py-2.5 text-sm rounded-xl border border-hairline focus:outline-none focus:ring-2 focus:ring-ink/20 bg-canvas font-medium"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-stone-700 mb-1.5 flex items-center gap-1.5">
-                <Clock className="w-3.5 h-3.5 text-stone-400" />
+              <label className="block text-xs font-bold text-body mb-1.5 flex items-center gap-1.5">
+                <Clock className="w-3.5 h-3.5 text-muted-soft" />
                 <span>시간대 구분 (아침/점심/저녁)</span>
               </label>
               <div className="grid grid-cols-3 gap-1.5">
@@ -256,8 +256,8 @@ export const CreatePotModal: React.FC<CreatePotModalProps> = ({
                     onClick={() => setSlot(s)}
                     className={`py-2 px-2 rounded-xl text-xs font-bold transition-all flex flex-col items-center gap-0.5 ${
                       slot === s
-                        ? 'bg-orange-500 text-white shadow-xs scale-102 ring-2 ring-orange-200'
-                        : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
+                        ? 'bg-primary text-on-primary scale-102 ring-2 ring-ink/15'
+                        : 'bg-surface-card text-body hover:bg-surface-strong'
                     }`}
                   >
                     <span className="text-sm">{slotLabels[s].icon}</span>
@@ -271,15 +271,15 @@ export const CreatePotModal: React.FC<CreatePotModalProps> = ({
           {/* Location Selection */}
           <div>
             <div className="flex items-center justify-between mb-1.5">
-              <label className="text-xs font-bold text-stone-700 flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-stone-400" />
+              <label className="text-xs font-bold text-body flex items-center gap-1.5">
+                <MapPin className="w-3.5 h-3.5 text-muted-soft" />
                 <span>만날 위치 / 지역</span>
               </label>
               <button
                 type="button"
                 onClick={handleGetCurrentLocation}
                 disabled={isLocating}
-                className="text-xs text-orange-600 font-bold hover:text-orange-700 flex items-center gap-1"
+                className="text-xs text-ink font-bold hover:text-brand-coral flex items-center gap-1"
               >
                 <Compass className={`w-3.5 h-3.5 ${isLocating ? 'animate-spin' : ''}`} />
                 <span>{isLocating ? '위치 찾는 중...' : '내 현재 위치'}</span>
@@ -292,7 +292,7 @@ export const CreatePotModal: React.FC<CreatePotModalProps> = ({
               placeholder="식사할 장소를 입력하세요 (예: 홍대, 성수, 판교, 여의도, 우리 동네 등)"
               value={locationName}
               onChange={(e) => setLocationName(e.target.value)}
-              className="w-full px-4 py-2.5 text-sm rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-orange-400 bg-stone-50"
+              className="w-full px-4 py-2.5 text-sm rounded-xl border border-hairline focus:outline-none focus:ring-2 focus:ring-ink/20 bg-canvas"
             />
 
             {/* Popular location chips */}
@@ -304,8 +304,8 @@ export const CreatePotModal: React.FC<CreatePotModalProps> = ({
                   onClick={() => setLocationName(loc)}
                   className={`text-[11px] px-2.5 py-1 rounded-lg transition-colors ${
                     locationName === loc
-                      ? 'bg-orange-100 text-orange-800 font-bold border border-orange-300'
-                      : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
+                      ? 'bg-brand-peach/30 text-ink font-bold border border-brand-peach'
+                      : 'bg-surface-card text-body hover:bg-surface-strong'
                   }`}
                 >
                   {loc}
@@ -316,18 +316,18 @@ export const CreatePotModal: React.FC<CreatePotModalProps> = ({
 
           {/* Friends Selection */}
           <div>
-            <label className="block text-xs font-bold text-stone-700 mb-1.5 flex items-center justify-between">
+            <label className="block text-xs font-bold text-body mb-1.5 flex items-center justify-between">
               <span className="flex items-center gap-1.5">
-                <Users className="w-3.5 h-3.5 text-stone-400" />
+                <Users className="w-3.5 h-3.5 text-muted-soft" />
                 <span>함께할 친구 선택</span>
               </span>
-              <span className="text-[11px] text-stone-400 font-normal">
+              <span className="text-[11px] text-muted-soft font-normal">
                 나(호스트) 포함 총 {1 + selectedFriendIds.length}명
               </span>
             </label>
 
             {userFriends.length === 0 ? (
-              <div className="p-4 rounded-2xl bg-stone-50 border border-stone-200 text-center text-xs text-stone-500">
+              <div className="p-4 rounded-2xl bg-surface-card border border-hairline text-center text-xs text-muted">
                 등록된 친구가 없습니다. 친구 목록 탭에서 친구를 추가해주세요!
               </div>
             ) : (
@@ -345,9 +345,9 @@ export const CreatePotModal: React.FC<CreatePotModalProps> = ({
                       onClick={() => handleToggleFriend(friend.id)}
                       className={`p-3 rounded-2xl border transition-all cursor-pointer flex items-center justify-between ${
                         isSelected
-                          ? 'bg-orange-50/80 border-orange-300 shadow-2xs'
-                          : 'bg-white border-stone-200 hover:border-stone-300'
-                      } ${friendConflict ? 'opacity-70 ring-1 ring-red-300' : ''}`}
+                          ? 'bg-brand-peach/20 border-brand-peach'
+                          : 'bg-canvas border-hairline hover:border-ink/20'
+                      } ${friendConflict ? 'opacity-70 ring-1 ring-error/40' : ''}`}
                     >
                       <div className="flex items-center gap-2.5 min-w-0">
                         <img
@@ -356,18 +356,18 @@ export const CreatePotModal: React.FC<CreatePotModalProps> = ({
                           className="w-8 h-8 rounded-full object-cover"
                         />
                         <div className="min-w-0 text-left">
-                          <div className="text-xs font-bold text-stone-900 truncate">
+                          <div className="text-xs font-bold text-ink truncate">
                             {friend.name}
                           </div>
                           {friend.allergies.length > 0 ? (
-                            <div className="text-[10px] text-red-600 font-semibold truncate">
+                            <div className="text-[10px] text-error font-semibold truncate">
                               ⚠️ {friend.allergies[0]}
                             </div>
                           ) : (
-                            <div className="text-[10px] text-stone-400 truncate">알레르기 없음</div>
+                            <div className="text-[10px] text-muted-soft truncate">알레르기 없음</div>
                           )}
                           {friendConflict && (
-                            <div className="text-[9px] text-red-700 font-bold">
+                            <div className="text-[9px] text-error font-bold">
                               ⚠️ 이 시간대 팟 있음
                             </div>
                           )}
@@ -377,8 +377,8 @@ export const CreatePotModal: React.FC<CreatePotModalProps> = ({
                       <div
                         className={`w-5 h-5 rounded-lg flex items-center justify-center border transition-colors ${
                           isSelected
-                            ? 'bg-orange-600 border-orange-600 text-white'
-                            : 'border-stone-300 bg-white'
+                            ? 'bg-primary border-primary text-on-primary'
+                            : 'border-hairline bg-canvas'
                         }`}
                       >
                         {isSelected && <Check className="w-3.5 h-3.5" />}
@@ -391,11 +391,11 @@ export const CreatePotModal: React.FC<CreatePotModalProps> = ({
           </div>
 
           {/* Actions */}
-          <div className="flex items-center justify-end gap-3 pt-4 border-t border-stone-100">
+          <div className="flex items-center justify-end gap-3 pt-4 border-t border-hairline">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2.5 rounded-xl text-xs font-bold text-stone-600 hover:bg-stone-100 transition-colors"
+              className="px-4 py-2.5 rounded-xl text-xs font-bold text-body hover:bg-surface-card transition-colors"
             >
               취소
             </button>
@@ -403,10 +403,10 @@ export const CreatePotModal: React.FC<CreatePotModalProps> = ({
               id="btn-create-pot-submit"
               type="submit"
               disabled={hasOverlap || isCreating}
-              className={`px-6 py-2.5 rounded-xl text-xs font-bold text-white shadow-sm transition-all flex items-center gap-1.5 ${
+              className={`px-6 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
                 hasOverlap || isCreating
-                  ? 'bg-stone-300 cursor-not-allowed text-stone-500'
-                  : 'bg-orange-600 hover:bg-orange-700'
+                  ? 'bg-surface-strong cursor-not-allowed text-muted-soft'
+                  : 'bg-primary hover:bg-ink/85 text-on-primary'
               }`}
             >
               <Sparkles className={`w-3.5 h-3.5 ${isCreating ? 'animate-spin' : ''}`} />

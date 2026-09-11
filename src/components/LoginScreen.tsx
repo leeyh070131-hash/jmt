@@ -39,60 +39,60 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
   };
 
   return (
-    <div className="min-h-screen bg-stone-100 flex flex-col justify-center items-center p-4 sm:p-6">
-      <div className="max-w-md w-full bg-white rounded-3xl shadow-xl border border-stone-200 overflow-hidden">
+    <div className="min-h-screen bg-canvas flex flex-col justify-center items-center p-4 sm:p-6">
+      <div className="max-w-md w-full bg-canvas rounded-3xl shadow-xl border border-hairline overflow-hidden">
         {/* Header Visual */}
-        <div className="bg-gradient-to-br from-orange-500 via-amber-500 to-orange-600 p-8 text-white text-center relative overflow-hidden">
+        <div className="bg-brand-lavender p-8 text-ink text-center relative overflow-hidden">
           <div className="relative z-10 flex flex-col items-center">
-            <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center text-white border border-white/20 shadow-md mb-4">
+            <div className="w-16 h-16 rounded-2xl bg-canvas/70 backdrop-blur-md flex items-center justify-center text-ink border border-ink/10 shadow-md mb-4">
               <Utensils className="w-8 h-8" />
             </div>
-            <h1 className="text-2xl sm:text-3xl font-black tracking-tight flex items-center gap-2">
-              밥팟 <span className="text-amber-200 text-lg font-bold">BobPot</span>
+            <h1 className="font-display text-2xl sm:text-3xl flex items-center gap-2">
+              밥팟 <span className="text-ink/60 text-lg font-medium">BobPot</span>
             </h1>
-            <p className="text-orange-100 text-xs sm:text-sm mt-1.5 font-medium max-w-xs">
+            <p className="text-ink/70 text-xs sm:text-sm mt-1.5 font-medium max-w-xs">
               친구들과 함께하는 실시간 식사 팟 & 취향 기반 맛집 투표
             </p>
           </div>
           {/* Subtle decorative circles */}
-          <div className="absolute -top-10 -right-10 w-36 h-36 rounded-full bg-white/10 blur-xl pointer-events-none" />
-          <div className="absolute -bottom-10 -left-10 w-36 h-36 rounded-full bg-amber-400/20 blur-xl pointer-events-none" />
+          <div className="absolute -top-10 -right-10 w-36 h-36 rounded-full bg-canvas/20 blur-xl pointer-events-none" />
+          <div className="absolute -bottom-10 -left-10 w-36 h-36 rounded-full bg-brand-peach/30 blur-xl pointer-events-none" />
         </div>
 
         {/* Content Body */}
         <div className="p-6 sm:p-8 space-y-6">
           <div className="space-y-3">
-            <div className="flex items-start gap-3 p-3 rounded-2xl bg-stone-50 border border-stone-200/80">
-              <div className="w-8 h-8 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <div className="flex items-start gap-3 p-3 rounded-2xl bg-brand-pink border border-hairline">
+              <div className="w-8 h-8 rounded-xl bg-on-primary/15 text-on-primary flex items-center justify-center flex-shrink-0 mt-0.5">
                 <ShieldCheck className="w-4 h-4" />
               </div>
               <div className="text-xs">
-                <div className="font-bold text-stone-900">알레르기 & 비선호 100% 안심 배제</div>
-                <div className="text-stone-500 mt-0.5 leading-relaxed">
+                <div className="font-bold text-on-primary">알레르기 & 비선호 100% 안심 배제</div>
+                <div className="text-on-primary/80 mt-0.5 leading-relaxed">
                   참여 멤버의 기피 음식과 알레르기를 자동으로 계산해 안전한 맛집만 후보로 추천합니다.
                 </div>
               </div>
             </div>
 
-            <div className="flex items-start gap-3 p-3 rounded-2xl bg-stone-50 border border-stone-200/80">
-              <div className="w-8 h-8 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <div className="flex items-start gap-3 p-3 rounded-2xl bg-brand-peach border border-hairline">
+              <div className="w-8 h-8 rounded-xl bg-ink/10 text-ink flex items-center justify-center flex-shrink-0 mt-0.5">
                 <Users className="w-4 h-4" />
               </div>
               <div className="text-xs">
-                <div className="font-bold text-stone-900">가짜 데이터 없는 진짜 친구 연동</div>
-                <div className="text-stone-500 mt-0.5 leading-relaxed">
+                <div className="font-bold text-ink">가짜 데이터 없는 진짜 친구 연동</div>
+                <div className="text-body mt-0.5 leading-relaxed">
                   지어낸 유저 없이, 실제 구글 이메일로 친구를 맺고 실시간으로 식사 투표에 참여합니다.
                 </div>
               </div>
             </div>
 
-            <div className="flex items-start gap-3 p-3 rounded-2xl bg-stone-50 border border-stone-200/80">
-              <div className="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <div className="flex items-start gap-3 p-3 rounded-2xl bg-brand-ochre border border-hairline">
+              <div className="w-8 h-8 rounded-xl bg-ink/10 text-ink flex items-center justify-center flex-shrink-0 mt-0.5">
                 <Sparkles className="w-4 h-4" />
               </div>
               <div className="text-xs">
-                <div className="font-bold text-stone-900">클라우드 자동 저장</div>
-                <div className="text-stone-500 mt-0.5 leading-relaxed">
+                <div className="font-bold text-ink">클라우드 자동 저장</div>
+                <div className="text-body mt-0.5 leading-relaxed">
                   한 번 설정한 취향과 식사 기록은 Firestore에 안전하게 보관되어 언제든 유지됩니다.
                 </div>
               </div>
@@ -101,8 +101,8 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
 
           {/* Error Message */}
           {errorMsg && (
-            <div className="p-3.5 rounded-2xl bg-red-50 border border-red-200 flex items-center gap-2.5 text-xs text-red-700">
-              <AlertCircle className="w-4 h-4 flex-shrink-0 text-red-500" />
+            <div className="p-3.5 rounded-2xl bg-error/10 border border-error/30 flex items-center gap-2.5 text-xs text-error">
+              <AlertCircle className="w-4 h-4 flex-shrink-0 text-error" />
               <span>{errorMsg}</span>
             </div>
           )}
@@ -113,11 +113,11 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
               id="google-login-primary-btn"
               onClick={handleGoogleSignIn}
               disabled={isLoading}
-              className="w-full py-3.5 px-5 rounded-2xl bg-white hover:bg-stone-50 border-2 border-stone-300 hover:border-stone-400 text-stone-800 font-bold text-sm shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-3 active:scale-[0.98] disabled:opacity-50"
+              className="w-full py-3.5 px-5 rounded-xl bg-canvas hover:bg-surface-soft border border-hairline hover:border-ink/30 text-ink font-semibold text-sm transition-all flex items-center justify-center gap-3 active:scale-[0.98] disabled:opacity-50"
             >
               {isLoading ? (
                 <>
-                  <Loader2 className="w-5 h-5 animate-spin text-orange-600" />
+                  <Loader2 className="w-5 h-5 animate-spin text-ink" />
                   <span>Google 인증 진행 중...</span>
                 </>
               ) : (
@@ -144,7 +144,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
                 </>
               )}
             </button>
-            <p className="text-[11px] text-center text-stone-400">
+            <p className="text-[11px] text-center text-muted-soft">
               구글 공식 보안 인증(Firebase Authentication)을 사용합니다.
             </p>
           </div>

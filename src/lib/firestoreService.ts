@@ -616,6 +616,16 @@ export async function removeFriendInDb(userId: string, friendId: string): Promis
     handleFirestoreError(error, OperationType.DELETE, `users/${userId}/friends/${friendId}`);
   }
 
+  // Also remove the reciprocal entry in the other user's friends subcollection.
+  // Without this, the other user still sees me as a friend after I unfriend them,
+  // since their friend list is built from their own users/{friendId}/friends subcollection.
+  try {
+    const reciprocalDocRef = doc(db, 'users', friendId, 'friends', userId);
+    await deleteDoc(reciprocalDocRef);
+  } catch (error) {
+    console.warn('Reciprocal friend subcollection cleanup failed:', error);
+  }
+
   // Also safely remove reciprocal or accepted request records so friendship state remains consistent
   try {
     const reqId1 = `${userId}_${friendId}`.replace(/[^a-zA-Z0-9_-]/g, '_');
