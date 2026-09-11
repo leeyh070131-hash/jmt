@@ -1,12 +1,8 @@
 {
-  "projectId": "sacred-tree-lr5vm",
-  "appId": "1:106165283024:web:ddb7c539e233e8197fd6d5",
-  "apiKey": "AIzaSyAt_wcaMSlVfSMPqeqUmFlNUT4OLXbCbok",
-  "authDomain": "sacred-tree-lr5vm.firebaseapp.com",
-  "firestoreDatabaseId": "ai-studio-9255a9f9-c0a6-4086-8cec-5e0808d77362",
-  "storageBucket": "sacred-tree-lr5vm.firebasestorage.app",
-  "messagingSenderId": "106165283024",
-  "measurementId": "",
-  "oAuthClientId": "106165283024-itln6m7o9h699il7c2erqgh3ok5p38pk.apps.googleusercontent.com",
-  "recaptchaSiteKey": ""
+  "projectId": "bobpot-jmt",
+  "appId": "1:124131724380:web:440e9f8362c3a9d9d9ea99",
+  "apiKey": "AIzaSyBLV2UeyaytBNRHKgS8KGAzY6dYQCoq1BE",
+  "authDomain": "bobpot-jmt.firebaseapp.com",
+  "storageBucket": "bobpot-jmt.firebasestorage.app",
+  "messagingSenderId": "124131724380"
 }

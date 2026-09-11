@@ -5,8 +5,8 @@ import firebaseConfig from '../../firebase-applet-config.json';
 
 const app = initializeApp(firebaseConfig);
 
-// CRITICAL: getFirestore with firestoreDatabaseId as required by instructions
-export const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
+// Uses the project's default Firestore database.
+export const db = getFirestore(app);
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({ prompt: 'select_account' });
