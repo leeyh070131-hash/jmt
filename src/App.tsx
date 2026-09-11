@@ -269,7 +269,11 @@ export default function App() {
     try {
       await saveMealPotInDb(newPot);
     } catch (err) {
-      console.warn('Firestore save pot deferred:', err);
+      console.error('Failed to save pot to Firestore:', err);
+      // Roll back the optimistic update so the UI doesn't show a pot that isn't actually shared/persisted.
+      setPots((prev) => prev.filter((p) => p.id !== newPot.id));
+      setSelectedPotId(null);
+      alert('식사 팟 저장에 실패했습니다. 잠시 후 다시 시도해주세요.');
     }
   };
 

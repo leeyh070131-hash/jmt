@@ -701,6 +701,9 @@ export async function saveMealPotInDb(pot: MealPot): Promise<void> {
   try {
     await setDoc(potRef, {
       ...pot,
+      // Firestore rejects `undefined` field values (thrown client-side before any network call),
+      // and coordinates stays undefined unless the host used the GPS button.
+      coordinates: pot.coordinates || null,
       updatedAt: new Date().toISOString(),
     });
   } catch (error) {
