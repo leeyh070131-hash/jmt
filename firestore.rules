@@ -30,7 +30,11 @@ service cloud.firestore {
 
       // Friends subcollection
       match /friends/{friendId} {
-        allow read, write: if isSignedIn() && isValidId(friendId)
+        // `list` must not depend on the enumerated document id (friendId) — Firestore
+        // rejects the whole query if it can't statically prove the rule for every
+        // possible result, so this only depends on the already-known parent path.
+        allow list: if isOwner(userId);
+        allow get, write: if isSignedIn() && isValidId(friendId)
           && (isOwner(userId) || request.auth.uid == friendId);
       }
     }
